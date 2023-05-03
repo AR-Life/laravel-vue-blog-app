@@ -1,0 +1,48 @@
+version: "3.8"
+services:
+    # client:
+    #     build: ./resources/js/client
+    #     depends_on:
+    #         - db
+    #     restart: always
+    #     links:
+    #         - "db:db"
+    #     ports:
+    #         - 5173:5173
+    # server:
+    #     build: ./
+    #     depends_on:
+    #         - db
+    #     environment:
+    #         - DB_HOST:db
+    #     restart: always
+    #     links:
+    #         - "db:db"
+    #     ports:
+    #         - 8001:8000
+    db:
+        image: mysql:latest
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: "${DB_PASSWORD}"
+            MYSQL_DATABASE: "${DB_DATABASE}"
+            MYSQL_USER: "${DB_USERNAME}"
+            MYSQL_PASSWORD: "${DB_PASSWORD}"
+        volumes:
+            - db_data:/var/lib/mysql
+        ports:
+            - "3306:3306"
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin:latest
+        restart: always
+        environment:
+            PMA_HOST: db
+            PMA_USER: "${DB_USERNAME}"
+            PMA_PASSWORD: "${DB_PASSWORD}"
+        ports:
+            - "8080:80"
+        depends_on:
+            - db
+volumes:
+    db_data:
+
