@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 # laravel-vue-blog-app
-=======
-
 
 
   
@@ -63,4 +60,3 @@ Her ne kadar proje direk docker ile kapsüllenmek istenilse de laravel ile mysql
 
 
 [http://localhost:5173](http://localhost:5173) url üzerinden proje yayında olacaktır.
->>>>>>> 892d9a1 (first commit)
